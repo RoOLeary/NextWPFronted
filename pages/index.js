@@ -19,6 +19,12 @@ export default function Home() {
         <a>blog articles page</a>
         </Link>
       </p>
+      <p>
+        You can find more articles on the{' '}
+        <Link href='/sample-page'>
+        <a>Go to Sample</a>
+        </Link>
+      </p>
       </main>
 
       <footer className={styles.footer}>

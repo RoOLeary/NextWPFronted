@@ -33,6 +33,9 @@ export default function Post({ postData }) {
             </Head>
             <main className={styles.main}>
                 <h1>{postData.title}</h1>
+                <Link href={`/blog`}>
+                    <a>Back to Blog Index</a>
+                </Link>
                 <div dangerouslySetInnerHTML={{ __html:postData.content }} />
             </main>
 
