@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>NextJS WooCommerce</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -17,6 +17,10 @@ export default function Home() {
         You can find more articles on the{' '}
         <Link href='/blog'>
         <a>blog articles page</a>
+        </Link>
+        <br />
+        <Link href='/products'>
+        <a>products page</a>
         </Link>
       </p>
       <p>

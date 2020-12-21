@@ -31,6 +31,7 @@ const Products = ({ allProducts: { edges } }) => (
             
             <div className={blogStyles.listitem__content}>
               <h2>{node.name}</h2>
+               <h2>{node.price ? node.price : 'FREEEEE' }</h2>
                <div dangerouslySetInnerHTML={{ __html:node.description }} />
               <Link href={`/products/${node.slug}`}>
                 <a>MORE INFO ></a>
