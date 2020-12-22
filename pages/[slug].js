@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'; 
 import Head from 'next/head';
 import Link from 'next/link';
-
+import Layout from '../src/components/Layout'
 // data
 import { getAllPagesWithSlug, getPage } from '../lib/api';
 
@@ -21,6 +21,8 @@ export default function Page({ postData }) {
 
     
     return(
+
+        <Layout>
         <div className={styles.container}>
             <Head>
                 <title>Sample</title>
@@ -39,6 +41,7 @@ export default function Page({ postData }) {
             </main>
 
         </div>
+        </Layout>
 
     );
 }
@@ -54,7 +57,7 @@ export async function getStaticPaths(){
 
 export async function getStaticProps({ params }){
     const data = await getPage(params.slug); 
-    console.log(data);
+    // console.log(data);
     return{
         props: {
             postData: data

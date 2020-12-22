@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import Head from 'next/head';
 import Link from 'next/link';
-
+import Layout from '../../src/components/Layout'
 // styles
 import styles from '../../styles/Home.module.css';
 import blogStyles from '../../styles/Blog.module.css';
@@ -12,6 +12,8 @@ import { getAllProducts } from '../../lib/api';
 
 const Products = ({ allProducts: { edges } }) => (
 
+
+  <Layout>
 
   <div className={styles.container}>
     <Head>
@@ -42,6 +44,7 @@ const Products = ({ allProducts: { edges } }) => (
       </section>
     </main>
   </div>
+</Layout>
 );
 
 

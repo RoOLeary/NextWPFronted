@@ -1,23 +1,27 @@
+import { useEffect } from 'react'
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../src/components/Layout'
-// data
-import { getAllPosts } from '../../lib/api';
-
 // styles
 import styles from '../../styles/Home.module.css';
 import blogStyles from '../../styles/Blog.module.css';
 
-const Blog = ({ allPosts: { edges } }) => (
-  <Layout>
+// data
+import { getAllDocuments } from '../../lib/api';
+
+
+const Documents = ({ allDocuments: { edges } }) => (
+
+
+<Layout>
   <div className={styles.container}>
     <Head>
-      <title>Blog articles page</title>
+      <title>Documents</title>
       <link rel='icon' href='/favicon.ico' />
     </Head>
 
     <main className={styles.main}>
-      <h1 className={styles.title}>Latest blog articles</h1>
+      <h1 className={styles.title}>Latest Documents</h1>
        <Link href={`/`}>
             <a>Home</a>
         </Link>
@@ -25,19 +29,12 @@ const Blog = ({ allPosts: { edges } }) => (
       <section>
         {edges.map(({ node }) => (
           <div className={blogStyles.listitem} key={node.id}>
-            <div className={blogStyles.listitem__thumbnail}>
-              <figure>
-                <img
-                  src={node.extraPostInfo.thumbsImage.mediaItemUrl}
-                  alt={node.title}
-                />
-              </figure>
-            </div>
+            
             <div className={blogStyles.listitem__content}>
-              <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">{node.title}</h1>
-              <p>{node.extraPostInfo.authorExcerpt}</p>
-              <Link href={`/blog/${node.slug}`}>
-                <a>Read more ></a>
+              <h2>{node.title}</h2>
+               <div dangerouslySetInnerHTML={{ __html:node.description }} />
+              <Link href={`/documents/${node.slug}`}>
+                <a>MORE INFO ></a>
               </Link>
             </div>
           </div>
@@ -49,14 +46,13 @@ const Blog = ({ allPosts: { edges } }) => (
 );
 
 
-
 export async function getStaticProps() {
-  const allPosts = await getAllPosts();
+  const allDocuments = await getAllDocuments();
   return {
     props: {
-      allPosts
+      allDocuments
     }
   };
 }
 
-export default Blog
+export default Documents

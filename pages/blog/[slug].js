@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'; 
 import Head from 'next/head';
 import Link from 'next/link';
-
+import Layout from '../../src/components/Layout'
 // data
 import { getAllPostsWithSlug, getPost } from '../../lib/api';
 
@@ -26,6 +26,7 @@ export default function Post({ postData }) {
 
 
     return(
+        <Layout>
         <div className={styles.container}>
             <Head>
                 <title>{postData.title}</title>
@@ -40,7 +41,7 @@ export default function Post({ postData }) {
             </main>
 
         </div>
-
+        </Layout>
     );
 }
 
