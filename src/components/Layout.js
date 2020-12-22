@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import Nav from './Nav'
 
-const Layout = (props) => {
+const Layout = ({ children }) => {
 
     return(
         <div className="site">
             <Nav />
             <main className="contentArea">
-                {props.children}
+                {children}
             </main>
 
         </div>

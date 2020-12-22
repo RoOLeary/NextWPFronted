@@ -1,8 +1,8 @@
 import '../styles/globals.css'
 import "tailwindcss/tailwind.css";
 
-function MyApp({ Component, pageProps }) {
+function NextWP({ Component, pageProps }) {
   return <Component {...pageProps} />
 }
 
-export default MyApp
+export default NextWP
