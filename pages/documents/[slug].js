@@ -36,7 +36,7 @@ export default function Document({ documentsData }) {
                 <link rel='icon' href='/favicon.ico' />
             </Head>
            <main className={styles.main}>
-                <h1>{documentsData.title}</h1>
+                <h1><strong>{documentsData.title}</strong></h1>
                 <div dangerouslySetInnerHTML={{ __html:documentsData.content }} />
                 <p>{documentsData.docCPTFields.docTitle}</p> 
                 <a onClick={() => giggles()}>

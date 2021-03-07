@@ -10,6 +10,9 @@ import styles from '../../styles/Home.module.css';
 import blogStyles from '../../styles/Blog.module.css';
 
 export default function Post({ postData }) {
+
+    console.log(postData);
+
     const router = useRouter(); 
 
     if(!router.isFallback && !postData?.slug){
@@ -34,6 +37,8 @@ export default function Post({ postData }) {
             </Head>
             <main className={styles.main}>
                 <h1>{postData.title}</h1>
+                <p><strong>{postData.dockerwp_test_field}</strong></p>
+                <p>Category: {postData.categories.edges[0].node.name}</p>
                 <Link href={`/blog`}>
                     <a>Back to Blog Index</a>
                 </Link>
@@ -47,7 +52,6 @@ export default function Post({ postData }) {
 
 export async function getStaticPaths(){
     const allPosts = await getAllPostsWithSlug(); 
-
     return { 
         paths: allPosts.edges.map(({ node }) => `/blog/${node.slug}`) || [],
         fallback: true
