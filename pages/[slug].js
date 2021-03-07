@@ -22,47 +22,33 @@ export default function Page({ postData }) {
     const VideoEmbed = dynamic(() => import('../src/components/VideoEmbed'));
 
 
-    let pageBlocks = Array.from(Object.entries(postData.pageBy.pageBlocks));
-        pageBlocks = pageBlocks[0][1];
+    
+    const blocks = postData.pageBy.pageBlocks.pageblocks;
+    console.log(blocks);
         
-    const output = pageBlocks.map((r, i) => {
-
-        console.log(r.fieldGroupName);
-
-
+    const output = blocks.map((r, i) => {
+        let fieldGroupNames = r.fieldGroupName;
         let pageObject = {
             groupName: r.fieldGroupName,
             additional_text: r.additionalText,
-            // selectArticles: blocks[key]['selectArticles'],
             videoEmbedCode: r.videoEmbedCode,
             tabs: r.tabs
         }
-        
-        
-        switch(r.fieldGroupName) {
+        switch(fieldGroupNames) {
             case 'page_Pageblocks_Pageblocks_Flexgroup':
-                return (
-                    <FlexUnit data={r.additionalText} />
-                ); 
+                return <FlexUnit key={i} data={pageObject['additional_text']} />
                 break;
             case 'page_Pageblocks_Pageblocks_VideoEmbed':
-                return (
-                    <OtherUnit data={r.videoEmbedCode}/>
-                ); 
+                return <VideoEmbed key={i} data={pageObject['videoEmbedCode']}/>
                 break;
             case 'page_Pageblocks_Pageblocks_TabUnit':
-                return (
-                    <Tabunit data={r.tabs}/>
-                ); 
+                return <Tabunit key={i} data={pageObject['tabs']}/>
                 break;
             default:
                 // code block
             }
     })
-            
-    
-            
-    
+                
     return(
         <Layout>
         <div className={styles.container}>

@@ -36,7 +36,7 @@ export default function Page({ postData }) {
                  <h1>{postData.pageBy.title}</h1>
                  <div dangerouslySetInnerHTML={{ __html:postData.pageBy.content }} />
                 
-                {blocks ? Object.entries(blocks).map(([key]) => {
+                 {blocks ? Object.entries(blocks).map(([key]) => {
                     let fieldGroupNames = blocks[key]['fieldGroupName'];
                     let pageObject = {
                         groupName: blocks[key]['fieldGroupName'],
